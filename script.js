@@ -15,7 +15,7 @@ script.start = {
 
 script.knock = {
     prompt: "You knock on the door, but no one answers.\nYou decide to go inside.\n\n  (Press Enter to continue)\n\n",
-    result: choice => {
+    result: () => {
         return 'inside';
     }
 };
@@ -36,6 +36,7 @@ script.table = {
     prompt: "You go to the table. Each of the bowls has porridge in it.\nOne is very large, another is regular-sized, " +
     "and a third is small.\n\n  1) Sample the porridges\n  2) Go upstairs\n\n",
     result: choice => {
+        choices.seenTable = true;
         if (choice == '2') {
             return 'upstairs';
         } else {
@@ -46,19 +47,22 @@ script.table = {
 
 script.sample = {
     prompt: "You taste the porridges, starting with the largest. It's too hot!\nYou try the regular-sized one. " +
-             "It's too cold!\nYou try the third. It's just right! You decide to eat it all up.\nAfter you're done, you " +
+             "It's too cold!\nYou try the third. It's just right! You decide to eat it all up.\n\nAfter you're done, you " +
              "decide to go upstairs.\n\n  (Press Enter to continue)\n\n",
-    result: function() {
+    result: () => {
         choices.atePorridge = true;
         return 'upstairs';
     }
 };
 
 script.upstairs = {
-    prompt: "You get to the top of the stairs and see a room.\nYou go inside and see three beds -- just like the bowls!" +
-             "\n\nThat trip up the stairs made you really tired. You decide to lie down.\n\nYou try the large bed first. " +
-             "It's too hard!\nYou try the regular-sized one. It's too soft!\nYou try the small one. It's just right.\n" +
-             "You fall fast asleep.\n\n  (Press Enter to continue)\n\n",
+    prompt: () => {
+        return "You get to the top of the stairs and see a room.\nYou go inside and see three beds" +
+            (choices.seenTable ? ' -- just like the bowls!' : '.') + "\n\n" + (choices.atePorridge ? 'All that ' +
+            'porridge' : 'Walking up the stairs') + " made you really tired. You decide to lie down.\n\nYou try the " +
+            "large bed first. It's too hard!\nYou try the regular-sized one. It's too soft!\nYou try the small one. " +
+            "It's just right.\n\nYou fall fast asleep.\n\n  (Press Enter to continue)\n\n";
+    },
     result: () => 'arrival'
 };
 

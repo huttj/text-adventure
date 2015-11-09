@@ -12,7 +12,9 @@ function run(name) {
     clear();
     var scene = script[name];
     if (scene) {
-        rl.question(scene.prompt, function (choice) {
+        var prompt = typeof scene.prompt === 'function' ? scene.prompt() : scene.prompt;
+
+        rl.question(prompt, function (choice) {
             if (scene.result) {
                 var next = scene.result(choice);
                 run(next);

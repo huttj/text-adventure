@@ -1,38 +1,30 @@
-var util   = require('util');
+var readline = require('readline');
 var script = require('./script');
 
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-// Used to get the next scenario
-var result = function () { return 'start' };
+run('start');
 
-// Used to store the player's last choice
-var choice;
-
-// Start!
-clear();
-log('\n  Press Enter to start.\n');
-
-process.stdin.on('data', function (text) {
-    choice = util.inspect(text)[1];
-
+function run(name) {
     clear();
-
-    if (result) {
-        var scene = script[result(choice)];
-        if (scene) {
-            log(scene.prompt);
-            //clear(scene.prompt.split('\n').length + 2);
-            result = scene.result;
-        } else {
-            log('Script for', name, 'not found!');
-            exit();
-        }
+    var scene = script[name];
+    if (scene) {
+        rl.question(scene.prompt, function (choice) {
+            if (scene.result) {
+                var next = scene.result(choice);
+                run(next);
+            } else {
+                exit();
+            }
+        });
     } else {
+        log('Script for', name, 'not found!');
         exit();
     }
-});
+}
 
 // Shorthand for console.log
 function log() {
@@ -40,18 +32,13 @@ function log() {
 }
 
 // Clear the screen by printing out blank lines
-function clear(less) {
+function clear() {
     process.stdout.write('\033c');
-    //var lines = process.stdout.getWindowSize()[1];
-    //var n = [];
-    //var total = lines - (less || 0);
-    //for(var i = 0; i < total; i++) {
-    //    n.push('\r\n');
-    //}
-    //console.log(n.join(''));
 }
 
 // Quit the program
 function exit() {
-    process.exit();
+    clear();
+    rl.close();
+    //process.exit();
 }

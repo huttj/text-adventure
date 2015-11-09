@@ -101,7 +101,7 @@ script.run = {
 
 script.friends = {
     prompt: "The bears see you sleeping and are surprised, but not angry. They've had their lunch and are now rather docile.\n" +
-            "Papa and Mama bear get in their beds and fall asleep.\nBaby bear gets in his bed and cuddles up next to you.\n" +
+            "Papa and Mama bear get in their beds and fall asleep.\nBaby bear gets in his bed and cuddles up next to you.\n\n" +
             "  (Press Enter to continue)\n",
     result: () => 'wake'
 };

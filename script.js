@@ -99,8 +99,8 @@ script.explain = {
 };
 
 script.run = {
-    prompt: "You run for your life, barely escaping alive.\nYou've learned your lesson and vow never to eat bear's food again." +
-            "\n\nThe End!\n\n  (Press Enter to exit)\n\n"
+    prompt: "You run for your life, barely escaping alive.\n\nYou've learned your lesson and vow never to eat bear food again." +
+            "\n\nThe End!\n\n  (Press Enter to exit)\n\n\n"
 };
 
 script.friends = {
@@ -112,7 +112,7 @@ script.friends = {
 
 script.wake = {
     prompt: "Hours later, when you all wake, you explain that you were lost in the woods.\n" +
-    "The bears smile, and explain that the highway is right behind their house. You're only feet away from town.\n" +
+    "The bears smile, and explain that the highway is right behind their house. You're only feet away from town.\n\n" +
     "You say your goodbyes and promise to stay in touch.\n\nThe end!\n\n  (Press Enter to exit)\n\n"
 };
 

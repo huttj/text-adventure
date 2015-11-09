@@ -12,7 +12,7 @@ var choice;
 
 // Start!
 clear();
-log('  Press Enter to start.\n');
+log('\n  Press Enter to start.\n');
 
 process.stdin.on('data', function (text) {
     choice = util.inspect(text)[1];
@@ -23,7 +23,7 @@ process.stdin.on('data', function (text) {
         var scene = script[result(choice)];
         if (scene) {
             log(scene.prompt);
-            clear(scene.prompt.split('\n').length + 2);
+            //clear(scene.prompt.split('\n').length + 2);
             result = scene.result;
         } else {
             log('Script for', name, 'not found!');
@@ -41,13 +41,14 @@ function log() {
 
 // Clear the screen by printing out blank lines
 function clear(less) {
-    var lines = process.stdout.getWindowSize()[1];
-    var n = [];
-    var total = lines - (less || 0);
-    for(var i = 0; i < total; i++) {
-        n.push('\r\n');
-    }
-    console.log(n.join(''));
+    process.stdout.write('\033c');
+    //var lines = process.stdout.getWindowSize()[1];
+    //var n = [];
+    //var total = lines - (less || 0);
+    //for(var i = 0; i < total; i++) {
+    //    n.push('\r\n');
+    //}
+    //console.log(n.join(''));
 }
 
 // Quit the program

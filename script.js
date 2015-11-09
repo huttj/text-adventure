@@ -14,14 +14,14 @@ script.start = {
 };
 
 script.knock = {
-    prompt: "You knock on the door, but no one answers.\n\nYou decide to go inside.\n\n  (Press Enter to continue)\n",
+    prompt: "You knock on the door, but no one answers.\nYou decide to go inside.\n\n  (Press Enter to continue)\n",
     result: choice => {
         return 'inside';
     }
 };
 
 script.inside = {
-    prompt: "You enter the cabin, cautiously. There doesn't seem to be anyone inside.\n\n" +
+    prompt: "You enter the cabin, cautiously. There doesn't seem to be anyone inside.\n" +
     "There is a table, with three chairs and three bowls.\n\n  1) Go to table\n  2) Go upstairs\n",
     result: choice => {
         if (choice == '2') {
@@ -33,7 +33,7 @@ script.inside = {
 };
 
 script.table = {
-    prompt: "You go to the table. Each of the bowls has porridge in it.\n\nOne is very large, another is regular-sized, " +
+    prompt: "You go to the table. Each of the bowls has porridge in it.\nOne is very large, another is regular-sized, " +
     "and a third is small.\n\n  1) Sample the porridges\n  2) Go upstairs\n",
     result: choice => {
         if (choice == '2') {
@@ -55,9 +55,9 @@ script.sample = {
 };
 
 script.upstairs = {
-    prompt: "You get to the top of the stairs and see a room.\n\nYou go inside and see three beds -- just like the " +
-             "bowls!\n\nThat trip up the stairs made you really tired. You decide to lie down.\n\nYou try the large bed first. " +
-             "It's too hard!\n\nYou try the regular-sized one. It's too soft!\n\nYou try the small one. It's just right.\n\n" +
+    prompt: "You get to the top of the stairs and see a room.\nYou go inside and see three beds -- just like the bowls!" +
+             "\n\nThat trip up the stairs made you really tired. You decide to lie down.\n\nYou try the large bed first. " +
+             "It's too hard!\nYou try the regular-sized one. It's too soft!\nYou try the small one. It's just right.\n" +
              "You fall fast asleep.\n\n  (Press Enter to continue)\n",
     result: () => 'arrival'
 };
@@ -74,10 +74,10 @@ script.arrival = {
 };
 
 script.chased = {
-    prompt: '"Hey", says Papa bear. "Somebody ate my porridge!"\n\n' +
-             '"That\'s strange," says Mama bear. "Somebody ate my porridge, too!"\n\n' +
+    prompt: '"Hey", says Papa bear. "Somebody ate my porridge!"\n' +
+             '"That\'s strange," says Mama bear. "Somebody ate my porridge, too!"\n' +
              '"Oh no!" Baby bear cried, "Somebody ate all of my porridge!"\n\n' +
-             "The bears rush upstairs and find you sleeping in Baby bear's bed.\n\n" +
+             "The bears rush upstairs and find you sleeping in Baby bear's bed.\n" +
              "They growl in unison, startling you and waking you up." +
              "\n\n  1) Try to explain\n  2) Run for your life\n",
     result: choice => {
@@ -90,25 +90,25 @@ script.chased = {
 };
 
 script.explain = {
-    prompt: "You try to explain, but the bears don't understand English.\n\nThey growl at you and give chase.\n\n  (Press Enter to continue)\n",
+    prompt: "You try to explain, but the bears don't understand English.\nThey growl at you and give chase.\n\n  (Press Enter to continue)\n",
     result: () => 'run'
 };
 
 script.run = {
-    prompt: "You run for your life, barely escaping alive.\n\nYou've learned your lesson and vow never to eat bear's food again." +
-            "\nThe end!\n\n  (Press Enter to exit)\n"
+    prompt: "You run for your life, barely escaping alive.\nYou've learned your lesson and vow never to eat bear's food again." +
+            "\n\nThe End!\n\n  (Press Enter to exit)\n"
 };
 
 script.friends = {
-    prompt: "The bears see you sleeping and are surprised, but not angry. They've had their lunch and are now rather docile.\n\n" +
-            "Papa and Mama bear get in their beds and fall asleep.\n\nBaby bear gets in his bed and cuddles up next to you.\n\n" +
+    prompt: "The bears see you sleeping and are surprised, but not angry. They've had their lunch and are now rather docile.\n" +
+            "Papa and Mama bear get in their beds and fall asleep.\nBaby bear gets in his bed and cuddles up next to you.\n" +
             "  (Press Enter to continue)\n",
     result: () => 'wake'
 };
 
 script.wake = {
-    prompt: "Hours later, when you all wake, you explain that you were lost in the woods.\n\n" +
-    "The bears smile, and explain that the highway is right behind their house. You're only feet away from town.\n\n" +
+    prompt: "Hours later, when you all wake, you explain that you were lost in the woods.\n" +
+    "The bears smile, and explain that the highway is right behind their house. You're only feet away from town.\n" +
     "You say your goodbyes and promise to stay in touch.\n\nThe end!\n\n  (Press Enter to exit)\n"
 };
 
